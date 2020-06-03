@@ -32,11 +32,23 @@ class UserViewModel (private val userRepository: UserRepository): ViewModel(), U
                     Timber.e("On complete")
                 }
             )
+        subscriptions.add(subscription)
     }
 
     override fun insertUser(name: String) {
-        userRepository.insertUser(name)
-        //TODO posto funkcija ne vraca completable da li mora kroz rxJava
+        val subscription = userRepository
+            .insertUser(name)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    Timber.e("User inserted")
+                },
+                {
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
     }
 
     override fun onCleared() {

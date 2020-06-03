@@ -2,6 +2,7 @@ package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.datas
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import io.reactivex.Completable
 import io.reactivex.Observable
 
 class SharedPrefDataSource (private val sharedPreferences: SharedPreferences) : UserDataSource{
@@ -17,10 +18,12 @@ class SharedPrefDataSource (private val sharedPreferences: SharedPreferences) : 
         }
     }
 
-    override fun insertUser(name: String) {
-        sharedPreferences.edit{
-            putString(USER_NAME_KEY, name)
-            apply()
+    override fun insertUser(name: String): Completable {
+        return Completable.fromCallable {
+            sharedPreferences.edit{
+                putString(USER_NAME_KEY, name)
+                apply()
+            }
         }
     }
 

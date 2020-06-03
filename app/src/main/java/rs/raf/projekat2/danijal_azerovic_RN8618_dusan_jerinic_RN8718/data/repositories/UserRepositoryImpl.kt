@@ -1,5 +1,6 @@
 package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.repositories
 
+import io.reactivex.Completable
 import io.reactivex.Observable
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.datasources.local.UserDataSource
 
@@ -9,8 +10,8 @@ class UserRepositoryImpl(private val userDataSource: UserDataSource): UserReposi
         return userDataSource.getUserData()
     }
 
-    override fun insertUser(name: String) {
-        userDataSource.insertUser(name)
+    override fun insertUser(name: String): Completable {
+        return userDataSource.insertUser(name)
     }
 
 }
