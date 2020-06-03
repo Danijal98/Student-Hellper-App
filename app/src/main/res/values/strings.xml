@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Student Hellper</string>
+    <string name="student_login">Student Login</string>
+    <string name="name">Name</string>
+    <string name="pin">Pin</string>
+    <string name="login">Login</string>
 </resources>
