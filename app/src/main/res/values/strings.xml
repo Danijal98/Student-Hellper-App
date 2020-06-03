@@ -4,4 +4,7 @@
     <string name="name">Name</string>
     <string name="pin">Pin</string>
     <string name="login">Login</string>
+    <string name="raspored">Raspored</string>
+    <string name="beleske">Beleske</string>
+    <string name="statistika">Statistika</string>
 </resources>
