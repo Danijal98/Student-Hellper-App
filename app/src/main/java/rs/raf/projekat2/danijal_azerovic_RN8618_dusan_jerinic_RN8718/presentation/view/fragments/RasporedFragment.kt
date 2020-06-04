@@ -5,14 +5,22 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_raspored.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.R
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.contract.RasporedContract
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.viewmodel.RasporedViewModel
 import timber.log.Timber
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.contract.RasporedContract
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.recycler.adapter.RasporedAdapter
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.recycler.diff.RasporedDiffItemCallback
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.viewmodel.RasporedViewModel
 
 class RasporedFragment: Fragment(R.layout.fragment_raspored) {
+
+    private lateinit var rasporedAdapter: RasporedAdapter
 
     private val rasporedViewModel: RasporedContract.ViewModel by sharedViewModel<RasporedViewModel>()
 
@@ -23,6 +31,7 @@ class RasporedFragment: Fragment(R.layout.fragment_raspored) {
 
     private fun init(){
         initDropdowns()
+        initRecycler()
         initListeners()
         initObservers()
     }
@@ -48,6 +57,12 @@ class RasporedFragment: Fragment(R.layout.fragment_raspored) {
         })
         rasporedViewModel.getRaspored()
         rasporedViewModel.fetchRaspored()
+    }
+
+    private fun initRecycler(){
+        recycler_raspored.layoutManager = LinearLayoutManager(activity)
+        rasporedAdapter = RasporedAdapter(RasporedDiffItemCallback())
+        recycler_raspored.adapter = rasporedAdapter
     }
 
 }

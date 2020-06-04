@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/beleska"
+            android:id="@+id/beleska_text"
             android:layout_width="270dp"
             android:layout_height="140dp"
             android:inputType="none"
