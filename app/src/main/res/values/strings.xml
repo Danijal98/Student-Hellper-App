@@ -14,4 +14,7 @@
     <string name="izmeni">Izmeni</string>
     <string name="odustani">Odustani</string>
     <string name="note_stats_in_last_5_days">Note stats in last 5 days</string>
+    <string name="profesor">Profesor:</string>
+    <string name="ucionica">Ucionica:</string>
+    <string name="grupe">Grupe:</string>
 </resources>

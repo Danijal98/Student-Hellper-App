@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="185dp"
+    android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
     app:cardPreventCornerOverlap="true"
@@ -12,74 +12,134 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/predmet_tip"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:id="@+id/tip"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:textColor="@color/primaryTextColor"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/profesor"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:id="@+id/predmet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:lines="1"
+            android:maxLines="1"
+            android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/primaryTextColor"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/predmet_tip" />
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/tip"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/ucionica"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:id="@+id/profesor_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
             android:textColor="@color/primaryTextColor"
+            android:text="@string/profesor"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/predmet" />
+
+        <TextView
+            android:id="@+id/profesor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/profesor_label"
+            app:layout_constraintTop_toBottomOf="@+id/predmet" />
+
+        <TextView
+            android:id="@+id/ucionica_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/ucionica"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profesor" />
 
         <TextView
-            android:id="@+id/grupe"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:id="@+id/ucionica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/ucionica_label"
+            app:layout_constraintTop_toBottomOf="@+id/profesor"  />
+
+        <TextView
+            android:id="@+id/grupe_label"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/grupe"
             android:textColor="@color/primaryTextColor"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ucionica" />
 
         <TextView
-        android:id="@+id/dan"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_gravity="left"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:textColor="@color/primaryTextColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/grupe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/grupe_label"
+            app:layout_constraintTop_toBottomOf="@+id/ucionica"  />
+
+        <TextView
+            android:id="@+id/dan"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/grupe" />
 
         <TextView
             android:id="@+id/vreme"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:textColor="@color/primaryTextColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dan" />
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dan"
+            app:layout_constraintTop_toBottomOf="@+id/grupe" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

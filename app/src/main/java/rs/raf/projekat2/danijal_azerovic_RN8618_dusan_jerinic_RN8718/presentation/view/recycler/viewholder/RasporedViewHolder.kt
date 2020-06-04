@@ -13,11 +13,28 @@ class RasporedViewHolder (
 
     @SuppressLint("SetTextI18n")
     fun bind(raspored: Raspored){
-        predmet_tip.text = raspored.predmet + " " + raspored.tip
+
+        when (raspored.dan){
+            "PON" -> dan.text = "Ponedeljak:"
+            "UTO" -> dan.text = "Utorak:"
+            "SRE" -> dan.text = "Sreda:"
+            "CET" -> dan.text = "Cetvrtak:"
+            "PET" -> dan.text = "Petak:"
+        }
+
+        var grupeEdited = ""
+        raspored.grupe.forEachIndexed{index, s ->
+            grupeEdited += s
+            if (index + 1 != raspored.grupe.size){
+                grupeEdited += ","
+            }
+        }
+
+        tip.text = raspored.tip + ":"
+        predmet.text = raspored.predmet
         profesor.text = raspored.nastavnik
         ucionica.text = raspored.ucionica
-        grupe.text = raspored.grupe.toString()
-        dan.text = raspored.dan
+        grupe.text = grupeEdited
         vreme.text = raspored.termin
     }
 
