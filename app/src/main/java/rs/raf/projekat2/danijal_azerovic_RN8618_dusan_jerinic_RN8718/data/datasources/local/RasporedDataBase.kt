@@ -2,6 +2,7 @@ package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.datas
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.RasporedEntity
 
 
@@ -10,6 +11,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models
     version = 1,
     exportSchema = false
 )
+@TypeConverters()
 abstract class RasporedDataBase : RoomDatabase(){
     abstract fun getRasporedDao(): RasporedDao
 }

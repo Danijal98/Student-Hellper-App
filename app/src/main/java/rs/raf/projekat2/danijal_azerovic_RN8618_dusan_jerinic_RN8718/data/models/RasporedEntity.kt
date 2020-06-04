@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "raspored")
 data class RasporedEntity(
-    @PrimaryKey(autoGenerate = true) val id: Integer,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val predmet: String,
     val tip: String,
     val nastavnik: String,

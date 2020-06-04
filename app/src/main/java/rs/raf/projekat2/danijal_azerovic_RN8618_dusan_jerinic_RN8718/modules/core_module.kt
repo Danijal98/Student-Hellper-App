@@ -15,6 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.BuildConfig
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.datasources.local.RasporedDataBase
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -24,11 +25,11 @@ val coreModule = module {
         androidApplication().getSharedPreferences(androidApplication().packageName, Context.MODE_PRIVATE)
     }
 
-    /*
-    single { Room.databaseBuilder(androidContext(), MovieDataBase::class.java, "MovieDb")
+
+    single { Room.databaseBuilder(androidContext(), RasporedDataBase::class.java, "MovieDb")
         .fallbackToDestructiveMigration()
         .build() }
-     */
+
 
     single { createRetrofit(moshi = get(), httpClient = get()) }
 
