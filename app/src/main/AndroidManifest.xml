@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_splash_student_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.view.activities.LoginActivity"></activity>
+        <activity android:name=".presentation.view.activities.LoginActivity" android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".presentation.view.activities.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.view.activities.MainActivity"></activity>
+        <activity android:name=".presentation.view.activities.MainActivity" android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>
