@@ -26,7 +26,7 @@ val coreModule = module {
     }
 
 
-    single { Room.databaseBuilder(androidContext(), RasporedDataBase::class.java, "MovieDb")
+    single { Room.databaseBuilder(androidContext(), RasporedDataBase::class.java, "StudentHelperDB")
         .fallbackToDestructiveMigration()
         .build() }
 
