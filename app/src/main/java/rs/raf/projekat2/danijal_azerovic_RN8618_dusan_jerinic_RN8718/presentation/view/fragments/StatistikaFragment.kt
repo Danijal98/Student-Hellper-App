@@ -31,7 +31,6 @@ class StatistikaFragment: Fragment(R.layout.fragment_statistika) {
         initGraph()
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun initGraph(){
         chart = bar_chart
         val dataBarEntries = ArrayList<BarEntry>()
