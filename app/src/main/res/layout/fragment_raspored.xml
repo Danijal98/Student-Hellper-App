@@ -54,9 +54,13 @@
         android:background="@color/primaryColor"
         android:inputType="text"
         android:maxLines="1"
+        android:gravity="center"
+        android:textColorHint="@color/secondaryTextColor"
         android:textColor="@color/primaryTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
+<!--    android:hint="@string/profesor_predmet"-->
+
 
     <Button
         android:id="@+id/search_raspored"

@@ -8,4 +8,10 @@
     <string name="beleske">Beleske</string>
     <string name="statistika">Statistika</string>
     <string name="search">Search</string>
+    <string name="profesor_predmet">Profesor/Predmet...</string>
+    <string name="add">Add</string>
+    <string name="pretrazi_po_naslovu_ili_tekstu">Pretrazi po naslovu ili tekstu..</string>
+    <string name="izmeni">Izmeni</string>
+    <string name="odustani">Odustani</string>
+    <string name="note_stats_in_last_5_days">Note stats in last 5 days</string>
 </resources>

@@ -7,5 +7,6 @@
   <color name="secondaryLightColor">#ff5131</color>
   <color name="secondaryDarkColor">#9b0000</color>
   <color name="primaryTextColor">#ffffff</color>
-  <color name="secondaryTextColor">#ffffff</color>
+  <color name="secondaryTextColor">#D3D3D3</color>
+  <color name="nePitajZasto">#0000FF</color>
 </resources>
