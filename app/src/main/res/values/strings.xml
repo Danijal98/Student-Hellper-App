@@ -18,4 +18,6 @@
     <string name="ucionica">Ucionica:</string>
     <string name="grupe">Grupe:</string>
     <string name="sacuvaj">Sacuvaj</string>
+    <string name="naslov_beleske">Naslov beleske...</string>
+    <string name="tekst_beleske">Tekst beleske...</string>
 </resources>

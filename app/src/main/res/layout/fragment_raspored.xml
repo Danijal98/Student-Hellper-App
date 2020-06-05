@@ -50,16 +50,18 @@
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@color/primaryColor"
+        android:gravity="center"
+        android:hint="@string/profesor_predmet"
         android:inputType="text"
         android:maxLines="1"
-        android:gravity="center"
-        android:textColorHint="@color/secondaryTextColor"
         android:textColor="@color/primaryTextColor"
+        android:textColorHint="@color/secondaryTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-<!--    android:hint="@string/profesor_predmet"-->
+        app:layout_constraintEnd_toStartOf="@+id/search_raspored"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <Button

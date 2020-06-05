@@ -10,18 +10,20 @@
         android:id="@+id/pretraga_beleski"
         android:layout_width="250dp"
         android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:background="@color/primaryColor"
         android:gravity="center"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:hint="@string/pretrazi_po_naslovu_ili_tekstu"
         android:inputType="text"
         android:maxLines="1"
         android:textColor="@color/primaryTextColor"
         android:textColorHint="@color/secondaryTextColor"
+        app:layout_constraintEnd_toStartOf="@+id/switch_arhivirane_beleske"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<!--    android:hint="@string/pretrazi_po_naslovu_ili_tekstu"-->
-<!--    Moguci bug, gde ne sklanja tastaturu na enter..-->
+
 
     <Switch
         android:id="@+id/switch_arhivirane_beleske"
