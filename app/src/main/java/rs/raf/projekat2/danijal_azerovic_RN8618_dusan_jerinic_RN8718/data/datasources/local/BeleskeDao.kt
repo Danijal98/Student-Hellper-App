@@ -11,6 +11,9 @@ abstract class BeleskeDao {
     @Query("SELECT * FROM beleske")
     abstract fun getAll(): Observable<List<BeleskaEntity>>
 
+    @Query("SELECT * FROM beleske WHERE title LIKE '%' || :text || '%' OR text LIKE '%' || :text || '%'")
+    abstract fun getFiltrirano(text: String): Observable<List<BeleskaEntity>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(beleskaEntity: BeleskaEntity): Completable
 

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -80,6 +81,20 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
         btn_add.setOnClickListener {
             val intent = Intent(context, AddNotesActivity::class.java)
             startActivityForResult(intent, MESSAGE_REQUEST_CODE_ADD)
+        }
+        //Swicth
+        switch_arhivirane_beleske.setOnClickListener {
+            if(switch_arhivirane_beleske.isChecked){
+                Toast.makeText(context, "Cekirano", Toast.LENGTH_SHORT).show()
+                //TODO beleskeViewModel.getNearhivirane()
+            }else{
+                Toast.makeText(context, "Necekirano", Toast.LENGTH_SHORT).show()
+                //TODO beleskeViewModel.getBeleske()
+            }
+        }
+        pretraga_beleski.doAfterTextChanged {
+            val filter = it.toString()
+            beleskeViewModel.getBeleskeByFilter(filter)
         }
     }
 

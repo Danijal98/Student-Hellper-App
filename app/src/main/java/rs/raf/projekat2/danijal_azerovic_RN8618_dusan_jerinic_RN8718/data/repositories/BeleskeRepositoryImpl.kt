@@ -26,6 +26,22 @@ class BeleskeRepositoryImpl (
             }
     }
 
+    override fun getAllByFilter(filter: String): Observable<List<Beleska>> {
+        return localDataSource
+            .getFiltrirano(filter)
+            .map {
+                Timber.e("VRACENO $it")
+                it.map {
+                    Beleska(
+                        id = it.id.toString(),
+                        title = it.title,
+                        text = it.text,
+                        archived = it.archived
+                    )
+                }
+            }
+    }
+
     override fun insert(beleskaEntity: BeleskaEntity): Completable {
         return localDataSource.insert(beleskaEntity)
     }
