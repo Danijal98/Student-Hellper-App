@@ -21,6 +21,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentatio
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.recycler.diff.BeleskaDiffItemCallback
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.states.BeleskeState
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.viewmodel.BeleskeViewModel
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.Filter
 import timber.log.Timber
 
 class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
@@ -74,7 +75,9 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
             Timber.e(it.toString())
             renderState(it)
         })
-        beleskeViewModel.getBeleske()
+        //beleskeViewModel.getBeleske()
+        //TODO DA LI JE OVO OKEJ
+        beleskeViewModel.getBeleskeByFilter(Filter("",false))
     }
 
     private fun initListeners() {
@@ -84,17 +87,17 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
         }
         //Swicth
         switch_arhivirane_beleske.setOnClickListener {
+            val filter = pretraga_beleski.text.toString()
             if(switch_arhivirane_beleske.isChecked){
-                Toast.makeText(context, "Cekirano", Toast.LENGTH_SHORT).show()
-                //TODO beleskeViewModel.getNearhivirane()
+                beleskeViewModel.getBeleskeByFilter(Filter(filter,true))
             }else{
-                Toast.makeText(context, "Necekirano", Toast.LENGTH_SHORT).show()
-                //TODO beleskeViewModel.getBeleske()
+                beleskeViewModel.getBeleskeByFilter(Filter(filter,false))
             }
         }
         pretraga_beleski.doAfterTextChanged {
             val filter = it.toString()
-            beleskeViewModel.getBeleskeByFilter(filter)
+            val archived = switch_arhivirane_beleske.isChecked
+            beleskeViewModel.getBeleskeByFilter(Filter(filter,archived))
         }
     }
 

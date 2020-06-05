@@ -5,6 +5,7 @@ import io.reactivex.Observable
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.datasources.local.BeleskeDao
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.Beleska
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.Filter
 import timber.log.Timber
 
 class BeleskeRepositoryImpl (
@@ -26,20 +27,35 @@ class BeleskeRepositoryImpl (
             }
     }
 
-    override fun getAllByFilter(filter: String): Observable<List<Beleska>> {
-        return localDataSource
-            .getFiltrirano(filter)
-            .map {
-                Timber.e("VRACENO $it")
-                it.map {
-                    Beleska(
-                        id = it.id.toString(),
-                        title = it.title,
-                        text = it.text,
-                        archived = it.archived
-                    )
+    override fun getAllByFilter(filter: Filter): Observable<List<Beleska>> {
+        val archived = filter.archived // true ako je switch upaljen
+        if(archived){
+            return localDataSource
+                .getFiltriranoAndUnArchived(filter.filter, 0)
+                .map {
+                    it.map {
+                        Beleska(
+                            id = it.id.toString(),
+                            title = it.title,
+                            text = it.text,
+                            archived = it.archived
+                        )
+                    }
                 }
-            }
+        }else{
+            return localDataSource
+                .getFiltrirano(filter.filter)
+                .map {
+                    it.map {
+                        Beleska(
+                            id = it.id.toString(),
+                            title = it.title,
+                            text = it.text,
+                            archived = it.archived
+                        )
+                    }
+                }
+        }
     }
 
     override fun insert(beleskaEntity: BeleskaEntity): Completable {

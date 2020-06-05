@@ -11,6 +11,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.repositories.BeleskeRepository
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.contract.BeleskeContract
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.states.BeleskeState
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.Filter
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -22,7 +23,7 @@ class BeleskeViewModel (
     private val subscriptions = CompositeDisposable()
     override val beleskeState: MutableLiveData<BeleskeState> = MutableLiveData()
 
-    private val publishSubject: PublishSubject<String> = PublishSubject.create()
+    private val publishSubject: PublishSubject<Filter> = PublishSubject.create()
 
     init {
         val subscription = publishSubject
@@ -115,7 +116,7 @@ class BeleskeViewModel (
         subscriptions.add(subscription)
     }
 
-    override fun getBeleskeByFilter(filter: String) {
+    override fun getBeleskeByFilter(filter: Filter) {
         publishSubject.onNext(filter)
     }
 
