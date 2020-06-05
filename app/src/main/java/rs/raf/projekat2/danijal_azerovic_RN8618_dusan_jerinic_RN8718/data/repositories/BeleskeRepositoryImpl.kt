@@ -5,6 +5,7 @@ import io.reactivex.Observable
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.datasources.local.BeleskeDao
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.Beleska
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
+import timber.log.Timber
 
 class BeleskeRepositoryImpl (
     private val localDataSource: BeleskeDao
@@ -36,6 +37,5 @@ class BeleskeRepositoryImpl (
     override fun delete(beleskaEntity: BeleskaEntity): Completable {
         return localDataSource.delete(beleskaEntity)
     }
-
 
 }

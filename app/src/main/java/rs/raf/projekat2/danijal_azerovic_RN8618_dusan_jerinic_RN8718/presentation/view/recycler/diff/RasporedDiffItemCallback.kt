@@ -10,7 +10,13 @@ class RasporedDiffItemCallback : DiffUtil.ItemCallback<Raspored>(){
     }
 
     override fun areContentsTheSame(oldItem: Raspored, newItem: Raspored): Boolean {
-        return oldItem.predmet == newItem.predmet && oldItem.tip == newItem.tip && oldItem.nastavnik == newItem.nastavnik && oldItem.grupe == newItem.grupe && oldItem.dan == newItem.dan && oldItem.termin == newItem.termin && oldItem.ucionica == newItem.ucionica
+        return oldItem.predmet == newItem.predmet
+                && oldItem.tip == newItem.tip
+                && oldItem.nastavnik == newItem.nastavnik
+                && oldItem.grupe == newItem.grupe
+                && oldItem.dan == newItem.dan
+                && oldItem.termin == newItem.termin
+                && oldItem.ucionica == newItem.ucionica
     }
 
 
