@@ -6,32 +6,42 @@
     android:layout_height="match_parent"
     android:background="@color/primaryLightColor">
 
-    <Spinner
-        android:id="@+id/grupa_dropdown"
-        android:layout_width="150dp"
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/primaryTextColor"
-        android:popupBackground="@color/primaryColor"
-        android:popupElevation="5dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/dan_dropdown"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/primaryTextColor"
-        android:popupBackground="@color/primaryColor"
-        android:popupElevation="5dp"
-        android:spinnerMode="dropdown"
+        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"/>
+        >
+        <Spinner
+            android:id="@+id/grupa_dropdown"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/primaryTextColor"
+            android:popupBackground="@color/primaryColor"
+            android:popupElevation="5dp"
+            android:spinnerMode="dropdown"
+            />
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/dan_dropdown"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/primaryTextColor"
+            android:popupBackground="@color/primaryColor"
+            android:popupElevation="5dp"
+            android:spinnerMode="dropdown"
+            />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_raspored"
@@ -43,11 +53,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grupa_dropdown" />
+        app:layout_constraintTop_toBottomOf="@+id/linear" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="230dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
