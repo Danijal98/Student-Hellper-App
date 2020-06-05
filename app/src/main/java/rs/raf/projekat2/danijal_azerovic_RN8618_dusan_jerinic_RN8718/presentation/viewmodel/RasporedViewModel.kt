@@ -62,4 +62,5 @@ class RasporedViewModel (
         super.onCleared()
         subscriptions.dispose()
     }
+
 }
