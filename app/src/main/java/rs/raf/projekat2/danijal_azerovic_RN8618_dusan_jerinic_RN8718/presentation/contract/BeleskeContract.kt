@@ -12,6 +12,8 @@ interface BeleskeContract {
 
         fun getBeleske()
         fun insertBeleska(beleskaEntity: BeleskaEntity)
+        fun updateBeleska(beleskaEntity: BeleskaEntity)
+        fun deleteBeleska(beleskaEntity: BeleskaEntity)
 
     }
 

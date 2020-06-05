@@ -15,6 +15,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.contract.BeleskeContract
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.activities.AddNotesActivity
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.activities.EditNotesActivity
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.recycler.adapter.BeleskeAdapter
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.recycler.diff.BeleskaDiffItemCallback
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.states.BeleskeState
@@ -27,9 +28,11 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
     private lateinit var beleskeAdapter: BeleskeAdapter
 
     companion object{
-        const val MESSAGE_REQUEST_CODE = 1
+        const val MESSAGE_REQUEST_CODE_ADD = 1
+        const val MESSAGE_REQUEST_CODE_EDIT = 2
         const val MESSAGE_KEY_TITLE = "title"
         const val MESSAGE_KEY_TEXT = "text"
+        const val MESSAGE_KEY_BELESKA = "beleska"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,16 +50,20 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
         recycler_beleske.layoutManager = LinearLayoutManager(activity)
         beleskeAdapter = BeleskeAdapter(BeleskaDiffItemCallback(),
             {
-                //TODO delete note
-                Toast.makeText(context, "Delete note", Toast.LENGTH_SHORT).show()
+                //Delete
+                val beleskaEntity = BeleskaEntity(it.id.toInt(),it.title,it.text,it.archived)
+                beleskeViewModel.deleteBeleska(beleskaEntity)
             },
             {
-                //TODO edit note
-                Toast.makeText(context, "Edit note", Toast.LENGTH_SHORT).show()
+                //Edit
+                val intent = Intent(context, EditNotesActivity::class.java)
+                intent.putExtra(MESSAGE_KEY_BELESKA, it)
+                startActivityForResult(intent, MESSAGE_REQUEST_CODE_EDIT)
             },
             {
-                //TODO archive note
-                Toast.makeText(context, "Archive note", Toast.LENGTH_SHORT).show()
+                //Archive
+                val beleskaEntity = BeleskaEntity(it.id.toInt(),it.title,it.text,!it.archived)
+                beleskeViewModel.updateBeleska(beleskaEntity)
             })
         recycler_beleske.adapter = beleskeAdapter
     }
@@ -72,7 +79,7 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
     private fun initListeners() {
         btn_add.setOnClickListener {
             val intent = Intent(context, AddNotesActivity::class.java)
-            startActivityForResult(intent, MESSAGE_REQUEST_CODE)
+            startActivityForResult(intent, MESSAGE_REQUEST_CODE_ADD)
         }
     }
 
@@ -83,12 +90,20 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
             return
         }
 
-        if (requestCode == MESSAGE_REQUEST_CODE){
+        if (requestCode == MESSAGE_REQUEST_CODE_ADD){
             data?.let {
                 val title = data.getStringExtra(MESSAGE_KEY_TITLE)
                 val text = data.getStringExtra(MESSAGE_KEY_TEXT)
                 val beleskaEntity = BeleskaEntity(0,title,text)
                 beleskeViewModel.insertBeleska(beleskaEntity)
+            }
+        }
+
+        if(requestCode == MESSAGE_REQUEST_CODE_EDIT){
+            data?.let {
+                val beleska = data.getParcelableExtra<Beleska>(MESSAGE_KEY_BELESKA)
+                val beleskaEntity = BeleskaEntity(beleska.id.toInt(), beleska.title, beleska.text, beleska.archived)
+                beleskeViewModel.updateBeleska(beleskaEntity)
             }
         }
 

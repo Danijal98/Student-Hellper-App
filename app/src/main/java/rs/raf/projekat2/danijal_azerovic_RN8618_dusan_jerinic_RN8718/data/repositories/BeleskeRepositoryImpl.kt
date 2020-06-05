@@ -29,5 +29,13 @@ class BeleskeRepositoryImpl (
         return localDataSource.insert(beleskaEntity)
     }
 
+    override fun update(beleskaEntity: BeleskaEntity): Completable {
+        return localDataSource.update(beleskaEntity)
+    }
+
+    override fun delete(beleskaEntity: BeleskaEntity): Completable {
+        return localDataSource.delete(beleskaEntity)
+    }
+
 
 }

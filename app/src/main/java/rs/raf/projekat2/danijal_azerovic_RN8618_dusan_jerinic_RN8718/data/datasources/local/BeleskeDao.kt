@@ -15,9 +15,9 @@ abstract class BeleskeDao {
     abstract fun insert(beleskaEntity: BeleskaEntity): Completable
 
     @Delete
-    abstract fun delete(beleskaEntity: BeleskaEntity)
+    abstract fun delete(beleskaEntity: BeleskaEntity): Completable
 
     @Update
-    abstract fun update(beleskaEntity: BeleskaEntity)
+    abstract fun update(beleskaEntity: BeleskaEntity): Completable
 
 }

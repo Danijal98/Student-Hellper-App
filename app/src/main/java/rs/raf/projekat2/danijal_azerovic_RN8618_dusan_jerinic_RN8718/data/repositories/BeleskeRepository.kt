@@ -9,5 +9,7 @@ interface BeleskeRepository {
 
     fun getAll(): Observable<List<Beleska>>
     fun insert(beleskaEntity: BeleskaEntity): Completable
+    fun update(beleskaEntity: BeleskaEntity): Completable
+    fun delete(beleskaEntity: BeleskaEntity): Completable
 
 }

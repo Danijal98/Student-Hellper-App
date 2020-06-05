@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import okhttp3.internal.notifyAll
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.repositories.BeleskeRepository
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.contract.BeleskeContract
@@ -50,6 +51,39 @@ class BeleskeViewModel (
             )
         subscriptions.add(subscription)
     }
+
+    override fun updateBeleska(beleskaEntity: BeleskaEntity) {
+        val subscription = beleskeRepository
+            .update(beleskaEntity)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    Timber.e("Complete")
+                },
+                {
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
+    override fun deleteBeleska(beleskaEntity: BeleskaEntity) {
+        val subscription = beleskeRepository
+            .delete(beleskaEntity)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    Timber.e("Deleted $beleskaEntity")
+                },
+                {
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
 
     override fun onCleared() {
         super.onCleared()

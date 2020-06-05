@@ -10,7 +10,9 @@ class BeleskaDiffItemCallback : DiffUtil.ItemCallback<Beleska>() {
     }
 
     override fun areContentsTheSame(oldItem: Beleska, newItem: Beleska): Boolean {
-        return oldItem.title == newItem.title && oldItem.text == newItem.text
+        return oldItem.title == newItem.title
+                && oldItem.text == newItem.text
+                && oldItem.archived == newItem.archived
     }
 
 }
