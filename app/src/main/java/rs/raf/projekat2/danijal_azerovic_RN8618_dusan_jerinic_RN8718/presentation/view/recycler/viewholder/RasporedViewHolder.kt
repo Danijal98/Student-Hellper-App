@@ -18,7 +18,7 @@ class RasporedViewHolder (
             "PON" -> dan.text = "Ponedeljak:"
             "UTO" -> dan.text = "Utorak:"
             "SRE" -> dan.text = "Sreda:"
-            "CET" -> dan.text = "Cetvrtak:"
+            "ČET" -> dan.text = "Četvrtak:"
             "PET" -> dan.text = "Petak:"
         }
 
