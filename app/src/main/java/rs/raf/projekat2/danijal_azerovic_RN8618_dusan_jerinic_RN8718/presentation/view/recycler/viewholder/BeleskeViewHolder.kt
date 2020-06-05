@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.beleske_item.*
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.R
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.Beleska
 
 class BeleskeViewHolder(override val containerView: View,
@@ -20,6 +21,11 @@ class BeleskeViewHolder(override val containerView: View,
     fun bind(beleska: Beleska){
         naslov.text = beleska.title
         beleska_text.text = beleska.text
+        if (beleska.archived){
+            archive_beleska.setBackgroundResource(R.drawable.ic_unarchive)
+        }else{
+            archive_beleska.setBackgroundResource(R.drawable.ic_archive)
+        }
     }
 
 }

@@ -7,7 +7,7 @@
     android:background="@color/primaryLightColor">
 
     <EditText
-        android:id="@+id/novi_naslov"
+        android:id="@+id/nova_beleska_naslov"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/novi_text"
+        android:id="@+id/nova_beleska_text"
         android:layout_width="300dp"
         android:layout_height="450dp"
         android:layout_marginTop="20dp"
@@ -30,22 +30,22 @@
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/novi_naslov" />
+        app:layout_constraintTop_toBottomOf="@+id/nova_beleska_naslov" />
 
     <Button
-        android:id="@+id/button_sacuvaj"
+        android:id="@+id/nova_beleska_button_sacuvaj"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:textColor="@color/primaryTextColor"
         android:background="@color/primaryColor"
-        android:text="@string/izmeni"
+        android:text="@string/sacuvaj"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button_odustani"
+        android:id="@+id/nova_beleska_button_odustani"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
