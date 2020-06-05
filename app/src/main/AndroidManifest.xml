@@ -13,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".presentation.view.activities.LoginActivity" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".presentation.view.activities.AddNotesActivity" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".presentation.view.activities.EditNotesActivity" android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".presentation.view.activities.SplashActivity"
             android:theme="@style/SplashTheme">
