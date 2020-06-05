@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "beleske")
 data class BeleskaEntity(
-    @PrimaryKey(autoGenerate = true) val id: String,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val title: String,
     val text: String,
     val archived: Boolean

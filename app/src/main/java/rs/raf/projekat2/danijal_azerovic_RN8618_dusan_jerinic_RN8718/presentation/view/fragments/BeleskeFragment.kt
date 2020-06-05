@@ -44,15 +44,15 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
     }
 
     private fun initObservers() {
-        TODO("Not yet implemented")
+        //TODO
     }
 
     private fun initListeners() {
-        TODO("Not yet implemented")
+        //TODO
     }
 
     private fun renderState(state: BeleskeState){
-        TODO("Not yet implemented")
+        //TODO
     }
 
 }

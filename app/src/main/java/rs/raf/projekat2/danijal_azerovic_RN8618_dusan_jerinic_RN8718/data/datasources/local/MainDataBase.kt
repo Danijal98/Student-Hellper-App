@@ -9,7 +9,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models
 
 @Database(
     entities = [RasporedEntity::class, BeleskaEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters()
