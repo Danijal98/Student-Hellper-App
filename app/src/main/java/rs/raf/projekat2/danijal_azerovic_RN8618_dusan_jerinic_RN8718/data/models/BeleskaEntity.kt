@@ -8,5 +8,5 @@ data class BeleskaEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val title: String,
     val text: String,
-    val archived: Boolean
+    val archived: Boolean = false
 )

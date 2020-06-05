@@ -11,11 +11,22 @@ class BeleskeRepositoryImpl (
 ): BeleskeRepository{
 
     override fun getAll(): Observable<List<Beleska>> {
-        TODO("Not yet implemented")
+        return localDataSource
+            .getAll()
+            .map {
+                it.map {
+                    Beleska(
+                        id = it.id.toString(),
+                        title = it.title,
+                        text = it.text,
+                        archived = it.archived
+                    )
+                }
+            }
     }
 
     override fun insert(beleskaEntity: BeleskaEntity): Completable {
-        TODO("Not yet implemented")
+        return localDataSource.insert(beleskaEntity)
     }
 
 

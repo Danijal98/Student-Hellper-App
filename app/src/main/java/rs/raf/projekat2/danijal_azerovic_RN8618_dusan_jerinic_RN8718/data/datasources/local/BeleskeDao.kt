@@ -9,7 +9,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models
 abstract class BeleskeDao {
 
     @Query("SELECT * FROM beleske")
-    abstract fun getAll(): Observable<BeleskaEntity>
+    abstract fun getAll(): Observable<List<BeleskaEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(beleskaEntity: BeleskaEntity): Completable

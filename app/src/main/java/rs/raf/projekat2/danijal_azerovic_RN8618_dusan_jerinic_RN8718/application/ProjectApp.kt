@@ -8,6 +8,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.modules.beleskeModule
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.modules.coreModule
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.modules.rasporedModule
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.modules.userModule
@@ -34,7 +35,8 @@ class ProjectApp : Application(){
         val modules = listOf(
             coreModule,
             userModule,
-            rasporedModule
+            rasporedModule,
+            beleskeModule
         )
         startKoin {
             androidLogger(Level.DEBUG)

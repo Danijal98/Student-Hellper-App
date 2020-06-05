@@ -38,7 +38,6 @@ class AddNotesActivity : AppCompatActivity(R.layout.activity_add_notes)   {
             finish()
         }
         nova_beleska_button_odustani.setOnClickListener {
-            //TODO
             finish()
         }
     }

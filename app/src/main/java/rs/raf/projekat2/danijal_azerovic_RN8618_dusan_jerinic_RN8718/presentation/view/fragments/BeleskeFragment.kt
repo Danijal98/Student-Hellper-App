@@ -4,12 +4,15 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_beleske.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.R
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.Beleska
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.contract.BeleskeContract
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.activities.AddNotesActivity
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.recycler.adapter.BeleskeAdapter
@@ -45,17 +48,25 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
         beleskeAdapter = BeleskeAdapter(BeleskaDiffItemCallback(),
             {
                 //TODO delete note
+                Toast.makeText(context, "Delete note", Toast.LENGTH_SHORT).show()
             },
             {
                 //TODO edit note
+                Toast.makeText(context, "Edit note", Toast.LENGTH_SHORT).show()
             },
             {
                 //TODO archive note
+                Toast.makeText(context, "Archive note", Toast.LENGTH_SHORT).show()
             })
+        recycler_beleske.adapter = beleskeAdapter
     }
 
     private fun initObservers() {
-        //TODO
+        beleskeViewModel.beleskeState.observe(viewLifecycleOwner, Observer {
+            Timber.e(it.toString())
+            renderState(it)
+        })
+        beleskeViewModel.getBeleske()
     }
 
     private fun initListeners() {
@@ -76,15 +87,25 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
             data?.let {
                 val title = data.getStringExtra(MESSAGE_KEY_TITLE)
                 val text = data.getStringExtra(MESSAGE_KEY_TEXT)
-                val beleska = Beleska("0", title, text)
-                Timber.e("$beleska")
+                val beleskaEntity = BeleskaEntity(0,title,text)
+                beleskeViewModel.insertBeleska(beleskaEntity)
             }
         }
 
     }
 
     private fun renderState(state: BeleskeState){
-        //TODO
+        when(state){
+            is BeleskeState.Success -> {
+                beleskeAdapter.submitList(state.beleske)
+            }
+            is BeleskeState.Error -> {
+                Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
+            }
+            is BeleskeState.Loading -> {
+                Toast.makeText(context, "Loading...", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 }
