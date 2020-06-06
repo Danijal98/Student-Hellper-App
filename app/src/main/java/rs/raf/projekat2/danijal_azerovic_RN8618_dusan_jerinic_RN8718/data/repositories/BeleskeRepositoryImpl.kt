@@ -6,7 +6,6 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.dataso
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.Beleska
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.Filter
-import timber.log.Timber
 
 class BeleskeRepositoryImpl (
     private val localDataSource: BeleskeDao
@@ -28,7 +27,7 @@ class BeleskeRepositoryImpl (
     }
 
     override fun getAllByFilter(filter: Filter): Observable<List<Beleska>> {
-        val archived = filter.archived // true ako je switch upaljen
+        val archived = filter.unarchived // true ako je switch upaljen
         if(archived){
             return localDataSource
                 .getFiltriranoAndUnArchived(filter.filter, 0)

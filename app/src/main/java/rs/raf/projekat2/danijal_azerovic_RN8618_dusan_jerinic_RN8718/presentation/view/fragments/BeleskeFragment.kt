@@ -75,8 +75,6 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
             Timber.e(it.toString())
             renderState(it)
         })
-        //beleskeViewModel.getBeleske()
-        //TODO DA LI JE OVO OKEJ
         beleskeViewModel.getBeleskeByFilter(Filter("",false))
     }
 
