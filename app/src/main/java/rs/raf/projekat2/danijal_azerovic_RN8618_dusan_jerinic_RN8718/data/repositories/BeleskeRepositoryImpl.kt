@@ -6,6 +6,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.dataso
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.Beleska
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.BeleskeFilter
+import timber.log.Timber
 
 class BeleskeRepositoryImpl (
     private val localDataSource: BeleskeDao
@@ -45,6 +46,7 @@ class BeleskeRepositoryImpl (
             return localDataSource
                 .getFiltrirano(filter.filter)
                 .map {
+                    Timber.e("$it")
                     it.map {
                         Beleska(
                             id = it.id.toString(),
@@ -67,6 +69,10 @@ class BeleskeRepositoryImpl (
 
     override fun delete(beleskaEntity: BeleskaEntity): Completable {
         return localDataSource.delete(beleskaEntity)
+    }
+
+    override fun updateById(id: Int, title: String, text: String, archived: Int): Completable {
+        return localDataSource.updateById(id,title,text,archived)
     }
 
 }

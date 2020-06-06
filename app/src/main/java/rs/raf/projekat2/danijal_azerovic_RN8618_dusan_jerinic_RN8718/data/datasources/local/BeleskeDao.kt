@@ -26,4 +26,7 @@ abstract class BeleskeDao {
     @Update
     abstract fun update(beleskaEntity: BeleskaEntity): Completable
 
+    @Query("UPDATE beleske SET title = :title, text = :text, archived = :archived WHERE id == :id")
+    abstract fun updateById(id: Int, title: String, text: String, archived: Int): Completable
+
 }

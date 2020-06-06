@@ -13,5 +13,6 @@ interface BeleskeRepository {
     fun insert(beleskaEntity: BeleskaEntity): Completable
     fun update(beleskaEntity: BeleskaEntity): Completable
     fun delete(beleskaEntity: BeleskaEntity): Completable
+    fun updateById(id: Int, title: String, text: String, archived: Int): Completable
 
 }

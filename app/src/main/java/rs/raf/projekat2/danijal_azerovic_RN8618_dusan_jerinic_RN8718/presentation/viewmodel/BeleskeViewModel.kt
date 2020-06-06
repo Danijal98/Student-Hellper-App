@@ -99,6 +99,22 @@ class BeleskeViewModel (
         subscriptions.add(subscription)
     }
 
+    override fun updateBeleskaById(id: Int, title: String, text: String, archived: Int) {
+        val subscription = beleskeRepository
+            .updateById(id,title,text,archived)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    Timber.e("Complete")
+                },
+                {
+                    Timber.e(it)
+                }
+            )
+        subscriptions.add(subscription)
+    }
+
     override fun deleteBeleska(beleskaEntity: BeleskaEntity) {
         val subscription = beleskeRepository
             .delete(beleskaEntity)

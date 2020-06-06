@@ -16,6 +16,7 @@ interface BeleskeContract {
         fun updateBeleska(beleskaEntity: BeleskaEntity)
         fun deleteBeleska(beleskaEntity: BeleskaEntity)
         fun getBeleskeByFilter(filter: BeleskeFilter)
+        fun updateBeleskaById(id: Int, title: String, text: String, archived: Int)
 
     }
 

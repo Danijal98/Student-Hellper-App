@@ -64,8 +64,9 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
             },
             {
                 //Archive
-                val beleskaEntity = BeleskaEntity(it.id.toInt(),it.title,it.text,!it.archived)
-                beleskeViewModel.updateBeleska(beleskaEntity)
+                val archived: Int = if (it.archived) 0 else 1 // Reverse
+                beleskeViewModel.updateBeleskaById(it.id.toInt(),it.title,it.text,archived)
+                //Promenjeno da se datum ne bi osvezio svaki put...
             })
         recycler_beleske.adapter = beleskeAdapter
     }
@@ -118,8 +119,9 @@ class BeleskeFragment: Fragment(R.layout.fragment_beleske) {
         if(requestCode == MESSAGE_REQUEST_CODE_EDIT){
             data?.let {
                 val beleska = data.getParcelableExtra<Beleska>(MESSAGE_KEY_BELESKA)
-                val beleskaEntity = BeleskaEntity(beleska.id.toInt(), beleska.title, beleska.text, beleska.archived)
-                beleskeViewModel.updateBeleska(beleskaEntity)
+                val archived: Int = if (beleska.archived) 1 else 0
+                beleskeViewModel.updateBeleskaById(beleska.id.toInt(),beleska.title,beleska.text,archived)
+                //Promenjeno da se datum ne bi osvezio svaki put...
             }
         }
 
