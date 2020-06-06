@@ -20,4 +20,5 @@
     <string name="sacuvaj">Sacuvaj</string>
     <string name="naslov_beleske">Naslov beleske...</string>
     <string name="tekst_beleske">Tekst beleske...</string>
+    <string name="login_image">Login image</string>
 </resources>

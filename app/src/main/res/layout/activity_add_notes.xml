@@ -43,7 +43,8 @@
         app:layout_constraintBottom_toTopOf="@+id/nova_beleska_button_odustani"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nova_beleska_naslov" />
+        app:layout_constraintTop_toBottomOf="@+id/nova_beleska_naslov"
+        android:inputType="text" />
 
     <Button
         android:id="@+id/nova_beleska_button_sacuvaj"
