@@ -84,7 +84,7 @@ class BeleskeViewModel (
     }
 
 
-    fun isSameDay(date1: Date, date2: Date): Boolean {
+    private fun isSameDay(date1: Date, date2: Date): Boolean {
         val localDate1: LocalDate = date1.toInstant()
             .atZone(ZoneId.systemDefault())
             .toLocalDate()
