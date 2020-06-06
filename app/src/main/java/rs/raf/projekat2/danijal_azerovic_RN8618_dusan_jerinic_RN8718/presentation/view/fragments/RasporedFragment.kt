@@ -37,11 +37,11 @@ class RasporedFragment: Fragment(R.layout.fragment_raspored) {
     }
 
     private fun initDropdowns(){
-        val adapter1 = ArrayAdapter(context, R.layout.spinner_item, arrayOf("GRUPE","102", "103", "104","307"))
+        val adapter1 = ArrayAdapter(context, R.layout.spinner_item, arrayOf("GRUPE", "101", "102", "103", "104", "105", "106", "107", "Dodatna nastava", "1d1", "1d2", "1s2", "1s4", "1s3", "1s1", "201", "202", "203", "204", "210", "211", "301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "313", "2s1", "2s2", "311", "312", "401", "402", "403", "410", "3s1", "3s2", "2d1", "2d2", "2d3", "2d4", "3d1", "4d1"))
         adapter1.setDropDownViewResource(R.layout.spinner_item)
         grupa_dropdown.adapter = adapter1
 
-        val adapter2 = ArrayAdapter(context, R.layout.spinner_item, arrayOf("DANI","PON", "UTO", "SRE", "CET", "PET"))
+        val adapter2 = ArrayAdapter(context, R.layout.spinner_item, arrayOf("DANI", "PON", "UTO", "SRE", "ČET", "PET"))
         adapter2.setDropDownViewResource(R.layout.spinner_item)
 
         dan_dropdown.adapter = adapter2
