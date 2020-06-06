@@ -2,6 +2,7 @@ package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentati
 
 import androidx.lifecycle.LiveData
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.states.RasporedState
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.RasporedFilter
 
 interface RasporedContract {
 
@@ -11,6 +12,7 @@ interface RasporedContract {
 
         fun fetchRaspored()
         fun getRaspored()
+        fun getRasporedByFilter(filter: RasporedFilter)
 
     }
 

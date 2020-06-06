@@ -16,6 +16,7 @@ import timber.log.Timber
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.recycler.adapter.RasporedAdapter
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.recycler.diff.RasporedDiffItemCallback
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.states.RasporedState
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.RasporedFilter
 
 class RasporedFragment: Fragment(R.layout.fragment_raspored) {
 
@@ -36,18 +37,25 @@ class RasporedFragment: Fragment(R.layout.fragment_raspored) {
     }
 
     private fun initDropdowns(){
-        val adapter1 = ArrayAdapter(context, R.layout.spinner_item, arrayOf("102", "103", "104"))
+        val adapter1 = ArrayAdapter(context, R.layout.spinner_item, arrayOf("GRUPE","102", "103", "104","307"))
         adapter1.setDropDownViewResource(R.layout.spinner_item)
         grupa_dropdown.adapter = adapter1
 
-        val adapter2 = ArrayAdapter(context, R.layout.spinner_item, arrayOf("PON", "UTO", "SRE", "CET", "PET"))
+        val adapter2 = ArrayAdapter(context, R.layout.spinner_item, arrayOf("DANI","PON", "UTO", "SRE", "CET", "PET"))
         adapter2.setDropDownViewResource(R.layout.spinner_item)
 
         dan_dropdown.adapter = adapter2
     }
 
     private fun initListeners(){
-
+        search_raspored.setOnClickListener {
+            var grupa = grupa_dropdown.selectedItem.toString()
+            var dan = dan_dropdown.selectedItem.toString()
+            var filter = RasporedFilter(grupa, dan, editText.text.toString())
+            if (filter.grupa == "GRUPE") filter.grupa = ""
+            if (filter.dan == "DANI") filter.dan = ""
+            rasporedViewModel.getRasporedByFilter(filter)
+        }
     }
 
     private fun initObservers(){
@@ -55,7 +63,7 @@ class RasporedFragment: Fragment(R.layout.fragment_raspored) {
             Timber.e(it.toString())
             renderState(it)
         })
-        rasporedViewModel.getRaspored()
+        rasporedViewModel.getRasporedByFilter(RasporedFilter())
         rasporedViewModel.fetchRaspored()
     }
 

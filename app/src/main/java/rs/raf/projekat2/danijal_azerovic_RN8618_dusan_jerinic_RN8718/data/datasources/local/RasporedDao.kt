@@ -14,6 +14,9 @@ abstract class RasporedDao {
     @Query("SELECT * FROM raspored")
     abstract fun getAll(): Observable<List<RasporedEntity>>
 
+    @Query("SELECT * FROM raspored WHERE grupe LIKE '%' || :grupa || '%' AND dan LIKE '%' || :dan || '%' AND (nastavnik LIKE '%' || :filter || '%' OR predmet LIKE '%' || :filter || '%')")
+    abstract fun getAllByFilter(filter: String, grupa: String, dan: String): Observable<List<RasporedEntity>>
+
     @Query("DELETE FROM raspored")
     abstract fun deleteAll()
 

@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.datasources.local.BeleskeDao
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.Beleska
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
-import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.Filter
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.BeleskeFilter
 
 class BeleskeRepositoryImpl (
     private val localDataSource: BeleskeDao
@@ -26,7 +26,7 @@ class BeleskeRepositoryImpl (
             }
     }
 
-    override fun getAllByFilter(filter: Filter): Observable<List<Beleska>> {
+    override fun getAllByFilter(filter: BeleskeFilter): Observable<List<Beleska>> {
         val archived = filter.unarchived // true ako je switch upaljen
         if(archived){
             return localDataSource

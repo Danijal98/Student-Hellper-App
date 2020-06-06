@@ -3,7 +3,7 @@ package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentati
 import androidx.lifecycle.LiveData
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.states.BeleskeState
-import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.Filter
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.BeleskeFilter
 
 interface BeleskeContract {
 
@@ -15,7 +15,7 @@ interface BeleskeContract {
         fun insertBeleska(beleskaEntity: BeleskaEntity)
         fun updateBeleska(beleskaEntity: BeleskaEntity)
         fun deleteBeleska(beleskaEntity: BeleskaEntity)
-        fun getBeleskeByFilter(filter: Filter)
+        fun getBeleskeByFilter(filter: BeleskeFilter)
 
     }
 
