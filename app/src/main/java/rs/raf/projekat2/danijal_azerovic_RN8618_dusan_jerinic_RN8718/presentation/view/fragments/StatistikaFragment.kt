@@ -51,7 +51,7 @@ class StatistikaFragment: Fragment(R.layout.fragment_statistika) {
 
     private fun updateGraph(list: List<Int>){
         val list2 = listOf<Int>(3,1,4,2,5)
-        stats.heights = list2
+        stats.heights = list
         stats.invalidate()
     }
 

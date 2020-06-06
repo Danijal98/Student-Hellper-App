@@ -15,7 +15,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentatio
 class BeleskeAdapter(beleskaDiffItemCallback: BeleskaDiffItemCallback,
                      private val deleteNoteAction: (Beleska) -> Unit,
                      private val editNoteAction: (Beleska) -> Unit,
-                     private val archiveNoteAction: (Beleska) -> Unit): ListAdapter<Beleska, BeleskeViewHolder>(beleskaDiffItemCallback), View.OnTouchListener {
+                     private val archiveNoteAction: (Beleska) -> Unit): ListAdapter<Beleska, BeleskeViewHolder>(beleskaDiffItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BeleskeViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -25,12 +25,6 @@ class BeleskeAdapter(beleskaDiffItemCallback: BeleskaDiffItemCallback,
 
     override fun onBindViewHolder(holder: BeleskeViewHolder, position: Int) {
         holder.bind(getItem(position))
-        holder.beleska_text.setOnTouchListener(this);
-        holder.beleska_text.movementMethod = ScrollingMovementMethod();
-    }
-
-    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        v?.parent?.requestDisallowInterceptTouchEvent(true); return false;
     }
 
 }
