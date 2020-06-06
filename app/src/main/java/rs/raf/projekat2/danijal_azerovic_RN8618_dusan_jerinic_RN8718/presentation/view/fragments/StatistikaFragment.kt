@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.fragment_statistika.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.R
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.contract.BeleskeContract
@@ -49,7 +50,9 @@ class StatistikaFragment: Fragment(R.layout.fragment_statistika) {
     }
 
     private fun updateGraph(list: List<Int>){
-        //TODO lista izgleda ovako [n,n,n,n,n], samo prodji kroz listu i mnozi offset sa n
+        val list2 = listOf<Int>(3,1,4,2,5)
+        stats.heights = list2
+        stats.invalidate()
     }
 
 }

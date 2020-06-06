@@ -14,9 +14,6 @@ class RasporedViewHolder (
     override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer{
 
-    val Int.dp: Int
-        get() = (this / Resources.getSystem().displayMetrics.density).toInt()
-
     @SuppressLint("SetTextI18n")
     fun bind(raspored: Raspored){
 

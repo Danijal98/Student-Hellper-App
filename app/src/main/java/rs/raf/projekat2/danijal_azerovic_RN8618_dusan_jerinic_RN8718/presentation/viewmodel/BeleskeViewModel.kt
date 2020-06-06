@@ -73,15 +73,16 @@ class BeleskeViewModel (
         for (beleska in lista.asReversed()){
             if (beleska.created.before(dateBefore5Days)) break
             if (!isSameDay(beleska.created,lastDay)) {
-                statisticsList.add(index--,counter)
+                statisticsList[index--] = counter
                 counter = 0
                 lastDay = beleska.created
             }
             counter++
         }
-        statisticsList.add(index,counter)
+        statisticsList[index-1] = counter
         return statisticsList
     }
+
 
     fun isSameDay(date1: Date, date2: Date): Boolean {
         val localDate1: LocalDate = date1.toInstant()
