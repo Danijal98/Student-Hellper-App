@@ -1,5 +1,6 @@
 package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -10,6 +11,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.repositories.BeleskeRepository
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.contract.BeleskeContract
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.states.BeleskeState
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.states.StatistikaState
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.BeleskeFilter
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
@@ -18,9 +20,9 @@ class BeleskeViewModel (
     private val beleskeRepository: BeleskeRepository
 ): ViewModel(), BeleskeContract.ViewModel{
 
-
     private val subscriptions = CompositeDisposable()
     override val beleskeState: MutableLiveData<BeleskeState> = MutableLiveData()
+    override val statistikaState: MutableLiveData<StatistikaState> = MutableLiveData()
 
     private val publishSubject: PublishSubject<BeleskeFilter> = PublishSubject.create()
 
@@ -113,6 +115,10 @@ class BeleskeViewModel (
                 }
             )
         subscriptions.add(subscription)
+    }
+
+    override fun getStatistics() {
+        TODO("Not yet implemented")
     }
 
     override fun deleteBeleska(beleskaEntity: BeleskaEntity) {
