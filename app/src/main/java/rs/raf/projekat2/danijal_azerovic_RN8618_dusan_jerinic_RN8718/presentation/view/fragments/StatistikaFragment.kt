@@ -31,13 +31,13 @@ class StatistikaFragment: Fragment(R.layout.fragment_statistika) {
             Timber.e(it.toString())
             renderState(it)
         })
+        beleskeViewModel.getBeleske()
     }
 
     private fun renderState(state: StatistikaState) {
         when(state){
             is StatistikaState.Success -> {
-                //TODO
-                //updateGraph(state.statistika)
+                updateGraph(state.statistika)
             }
             is StatistikaState.Error -> {
                 Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
@@ -49,7 +49,7 @@ class StatistikaFragment: Fragment(R.layout.fragment_statistika) {
     }
 
     private fun updateGraph(list: List<Int>){
-
+        //TODO lista izgleda ovako [n,n,n,n,n], samo prodji kroz listu i mnozi offset sa n
     }
 
 }

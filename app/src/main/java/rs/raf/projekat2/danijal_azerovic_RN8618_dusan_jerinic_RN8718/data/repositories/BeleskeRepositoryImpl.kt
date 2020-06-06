@@ -21,7 +21,8 @@ class BeleskeRepositoryImpl (
                         id = it.id.toString(),
                         title = it.title,
                         text = it.text,
-                        archived = it.archived
+                        archived = it.archived,
+                        created = it.kreirano
                     )
                 }
             }
@@ -38,7 +39,8 @@ class BeleskeRepositoryImpl (
                             id = it.id.toString(),
                             title = it.title,
                             text = it.text,
-                            archived = it.archived
+                            archived = it.archived,
+                            created = it.kreirano
                         )
                     }
                 }
@@ -52,7 +54,8 @@ class BeleskeRepositoryImpl (
                             id = it.id.toString(),
                             title = it.title,
                             text = it.text,
-                            archived = it.archived
+                            archived = it.archived,
+                            created = it.kreirano
                         )
                     }
                 }

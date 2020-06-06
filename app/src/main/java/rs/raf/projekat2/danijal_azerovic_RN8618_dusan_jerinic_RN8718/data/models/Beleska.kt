@@ -2,11 +2,13 @@ package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 @Parcelize
 data class Beleska(
     val id: String = "0",
     var title: String,
     var text: String,
-    val archived: Boolean = false
+    val archived: Boolean = false,
+    val created: Date
 ): Parcelable

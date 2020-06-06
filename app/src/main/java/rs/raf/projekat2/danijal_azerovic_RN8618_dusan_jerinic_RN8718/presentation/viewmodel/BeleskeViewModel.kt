@@ -1,12 +1,15 @@
 package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
+import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
+import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.Beleska
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.models.BeleskaEntity
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.data.repositories.BeleskeRepository
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.contract.BeleskeContract
@@ -14,6 +17,9 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentatio
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.states.StatistikaState
 import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.BeleskeFilter
 import timber.log.Timber
+import java.time.LocalDate
+import java.time.ZoneId
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class BeleskeViewModel (
@@ -43,13 +49,48 @@ class BeleskeViewModel (
             .subscribe(
                 {
                     beleskeState.value = BeleskeState.Success(it)
+                    //statistikaState.value = StatistikaState.Success(createStatisticsList(it))
                 },
                 {
                     beleskeState.value = BeleskeState.Error("Error happened while fetching data from db")
+                    //statistikaState.value = StatistikaState.Error("Error happened while fetching data from db")
                     Timber.e(it)
                 }
             )
         subscriptions.add(subscription)
+    }
+
+    private fun createStatisticsList(lista: List<Beleska>): List<Int>{
+        val statisticsList: MutableList<Int> = mutableListOf(0,0,0,0,0)
+        val datum = Date()
+        val cal: Calendar = Calendar.getInstance()
+        cal.time = datum
+        cal.add(Calendar.DATE, -5)
+        val dateBefore5Days: Date = cal.time
+        var lastDay = datum
+        var counter = 0
+        var index = statisticsList.size
+        for (beleska in lista.asReversed()){
+            if (beleska.created.before(dateBefore5Days)) break
+            if (!isSameDay(beleska.created,lastDay)) {
+                statisticsList.add(index--,counter)
+                counter = 0
+                lastDay = beleska.created
+            }
+            counter++
+        }
+        statisticsList.add(index,counter)
+        return statisticsList
+    }
+
+    fun isSameDay(date1: Date, date2: Date): Boolean {
+        val localDate1: LocalDate = date1.toInstant()
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate()
+        val localDate2: LocalDate = date2.toInstant()
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate()
+        return localDate1.isEqual(localDate2)
     }
 
     override fun getBeleske() {
@@ -59,10 +100,12 @@ class BeleskeViewModel (
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    beleskeState.value = BeleskeState.Success(it)
+                    //beleskeState.value = BeleskeState.Success(it)
+                    statistikaState.value = StatistikaState.Success(createStatisticsList(it))
                 },
                 {
-                    beleskeState.value = BeleskeState.Error("Error happened while fetching data from db")
+                    //beleskeState.value = BeleskeState.Error("Error happened while fetching data from db")
+                    statistikaState.value = StatistikaState.Error("Error happened while fetching data from db")
                     Timber.e(it)
                 }
             )
@@ -118,7 +161,7 @@ class BeleskeViewModel (
     }
 
     override fun getStatistics() {
-        TODO("Not yet implemented")
+
     }
 
     override fun deleteBeleska(beleskaEntity: BeleskaEntity) {

@@ -8,6 +8,7 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.utilities.B
 
 interface BeleskeRepository {
 
+    // Beleske
     fun getAll(): Observable<List<Beleska>>
     fun getAllByFilter(filter: BeleskeFilter): Observable<List<Beleska>>
     fun insert(beleskaEntity: BeleskaEntity): Completable

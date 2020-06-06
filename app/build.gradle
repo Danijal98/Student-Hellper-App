@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718"
-        minSdkVersion 22
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
