@@ -1,24 +1,24 @@
 <resources>
-    <string name="app_name">Student Hellper</string>
+    <string name="app_name">Student Helper</string>
     <string name="student_login">Student Login</string>
-    <string name="name">Name</string>
+    <string name="name">Ime</string>
     <string name="pin">Pin</string>
     <string name="login">Login</string>
     <string name="raspored">Raspored</string>
-    <string name="beleske">Beleske</string>
+    <string name="beleske">Beleške</string>
     <string name="statistika">Statistika</string>
-    <string name="search">Search</string>
+    <string name="search">Pretraži</string>
     <string name="profesor_predmet">Profesor/Predmet...</string>
     <string name="add">Add</string>
-    <string name="pretrazi_po_naslovu_ili_tekstu">Pretrazi po naslovu ili tekstu..</string>
+    <string name="pretrazi_po_naslovu_ili_tekstu">Pretraži po naslovu ili tekstu..</string>
     <string name="izmeni">Izmeni</string>
     <string name="odustani">Odustani</string>
-    <string name="note_stats_in_last_5_days">Statistika beleski tokom proslih 5 dana</string>
+    <string name="note_stats_in_last_5_days">Statistika beleški tokom prethodnih 5 dana</string>
     <string name="profesor">Profesor:</string>
-    <string name="ucionica">Ucionica:</string>
+    <string name="ucionica">Učionica:</string>
     <string name="grupe">Grupe:</string>
-    <string name="sacuvaj">Sacuvaj</string>
-    <string name="naslov_beleske">Naslov beleske...</string>
-    <string name="tekst_beleske">Tekst beleske...</string>
+    <string name="sacuvaj">Sačuvaj</string>
+    <string name="naslov_beleske">Naslov beleške...</string>
+    <string name="tekst_beleske">Tekst beleške...</string>
     <string name="login_image">Login image</string>
 </resources>

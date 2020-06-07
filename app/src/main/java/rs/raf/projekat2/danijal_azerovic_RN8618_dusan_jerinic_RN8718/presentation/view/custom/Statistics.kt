@@ -1,6 +1,7 @@
 package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.view.custom
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
@@ -12,19 +13,20 @@ import rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.extensions.
 import timber.log.Timber
 
 class Statistics : View{
+
     constructor(context: Context)
             : super(context)
     constructor(context: Context, attrs: AttributeSet?)
-            : super(context, attrs)
+            : super(context, attrs) {
+        getColor(context, attrs)
+    }
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int)
-            : super(context, attrs, defStyleAttr)
+            : super(context, attrs, defStyleAttr) {
+        getColor(context, attrs)
+    }
 
     private var rect: Rect = Rect()
-    private var paint: Paint = Paint().also {
-        it.isAntiAlias = true
-        it.color = ContextCompat.getColor(context, R.color.secondaryColor)
-        it.style = Paint.Style.FILL
-    }
+    private lateinit var paint: Paint
 
     var heights = listOf<Int>()
 
@@ -54,4 +56,17 @@ class Statistics : View{
             canvas?.drawRect(rect, paint)
         }
     }
+
+    private fun getColor(context: Context, attrs: AttributeSet?){
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.Statistics)
+        val barColor = typedArray.getColor(R.styleable.Statistics_barColor, 0)
+        typedArray.recycle()
+        paint = Paint().also {
+            it.isAntiAlias = true
+            //it.color = ContextCompat.getColor(context, R.color.secondaryColor)
+            it.color = barColor
+            it.style = Paint.Style.FILL
+        }
+    }
+
 }
