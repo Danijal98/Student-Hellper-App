@@ -1,8 +1,5 @@
 package rs.raf.projekat2.danijal_azerovic_RN8618_dusan_jerinic_RN8718.presentation.viewmodel
 
-import android.annotation.SuppressLint
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -49,11 +46,9 @@ class BeleskeViewModel (
             .subscribe(
                 {
                     beleskeState.value = BeleskeState.Success(it)
-                    //statistikaState.value = StatistikaState.Success(createStatisticsList(it))
                 },
                 {
                     beleskeState.value = BeleskeState.Error("Error happened while fetching data from db")
-                    //statistikaState.value = StatistikaState.Error("Error happened while fetching data from db")
                     Timber.e(it)
                 }
             )
@@ -101,11 +96,9 @@ class BeleskeViewModel (
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    //beleskeState.value = BeleskeState.Success(it)
                     statistikaState.value = StatistikaState.Success(createStatisticsList(it))
                 },
                 {
-                    //beleskeState.value = BeleskeState.Error("Error happened while fetching data from db")
                     statistikaState.value = StatistikaState.Error("Error happened while fetching data from db")
                     Timber.e(it)
                 }
@@ -161,9 +154,6 @@ class BeleskeViewModel (
         subscriptions.add(subscription)
     }
 
-    override fun getStatistics() {
-
-    }
 
     override fun deleteBeleska(beleskaEntity: BeleskaEntity) {
         val subscription = beleskeRepository

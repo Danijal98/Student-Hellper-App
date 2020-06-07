@@ -21,9 +21,6 @@ interface BeleskeContract {
         fun getBeleskeByFilter(filter: BeleskeFilter)
         fun updateBeleskaById(id: Int, title: String, text: String, archived: Int)
 
-        //Statistika
-        fun getStatistics()
-
     }
 
 }

@@ -32,15 +32,7 @@ class RasporedViewHolder (
                 grupeEdited += ","
             }
         }
-        /*
-        if(raspored.tip == "Predavanja i vezbe"){
-            val constraintSet = ConstraintSet()
-            constraintSet.clone(constraintLayout)
-            constraintSet.connect(R.id.profesor_label, ConstraintSet.TOP, R.id.tip, ConstraintSet.BOTTOM, 10)
-            constraintSet.connect(R.id.profesor, ConstraintSet.TOP, R.id.tip, ConstraintSet.BOTTOM, 10)
-            constraintSet.applyTo(constraintLayout)
-        }
-         */
+
         tip.text = raspored.tip + ":"
         predmet.text = raspored.predmet
         profesor.text = raspored.nastavnik

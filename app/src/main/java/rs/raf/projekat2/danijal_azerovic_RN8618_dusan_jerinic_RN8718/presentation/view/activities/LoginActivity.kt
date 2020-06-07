@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
 
     private fun initListeners() {
         loginBtn.setOnClickListener {
-            val name = nameEditText.text.toString()
+            val name = nameEditText.text.toString().trim()
             val pin = "1111"
             if(name.isNotBlank() && pinEditText.text.toString() == pin){
                 userViewModel.insertUser(name)

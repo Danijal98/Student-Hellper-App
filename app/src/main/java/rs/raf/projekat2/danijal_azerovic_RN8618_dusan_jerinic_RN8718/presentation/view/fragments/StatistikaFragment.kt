@@ -24,7 +24,6 @@ class StatistikaFragment: Fragment(R.layout.fragment_statistika) {
 
     private fun init(){
         initObservers()
-        //updateGraph()
     }
 
     private fun initObservers() {
