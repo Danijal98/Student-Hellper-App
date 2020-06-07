@@ -69,9 +69,9 @@ class BeleskeViewModel (
         val dateBefore5Days: Date = cal.time
         var lastDay = datum
         var counter = 0
-        var index = statisticsList.size
+        var index = statisticsList.size - 1
         for (beleska in lista.asReversed()){
-            if (beleska.created.before(dateBefore5Days)) break
+            if (isSameDay(beleska.created, dateBefore5Days)) break
             if (!isSameDay(beleska.created,lastDay)) {
                 statisticsList[index--] = counter
                 counter = 0
@@ -79,7 +79,7 @@ class BeleskeViewModel (
             }
             counter++
         }
-        statisticsList[index-1] = counter
+        statisticsList[index] = counter
         return statisticsList
     }
 
