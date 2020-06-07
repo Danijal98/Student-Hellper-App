@@ -51,10 +51,11 @@ class RasporedFragment: Fragment(R.layout.fragment_raspored) {
         search_raspored.setOnClickListener {
             var grupa = grupa_dropdown.selectedItem.toString()
             var dan = dan_dropdown.selectedItem.toString()
-            var filter = RasporedFilter(grupa, dan, editText.text.toString())
+            var filter = RasporedFilter(grupa, dan, editText.text.toString().trim())
             if (filter.grupa == "GRUPE") filter.grupa = ""
             if (filter.dan == "DANI") filter.dan = ""
             rasporedViewModel.getRasporedByFilter(filter)
+            editText.text.clear()
         }
     }
 
